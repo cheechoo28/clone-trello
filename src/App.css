@@ -12,3 +12,19 @@
   background-color: white;
   width: 100%;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.board {
+  height: 200px;
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
