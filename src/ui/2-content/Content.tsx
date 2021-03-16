@@ -1,9 +1,12 @@
 import React from "react";
+import {Boards} from "./c1-boards/Boards";
 
 export const Content = () => {
     return (
         <div className={'content'}>
-            Content
+            <div >
+                <Boards/>
+            </div>
         </div>
     )
 }
