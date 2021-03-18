@@ -60,6 +60,11 @@ export const deleteBoardTC = (id: string) => async (dispatch: Dispatch<any>) => 
     dispatch(getBoardsTC())
 };
 
+export const updateBoardTC = (id: string, title: string) => async (dispatch: Dispatch<any>) => {
+    await boardsAPI.updateBoard(id, title);
+    dispatch(getBoardsTC())
+};
+
 
 type ActionsType = SetBoardsActionType | AddBoardActionType | SetBoardTitlesActionType
 
