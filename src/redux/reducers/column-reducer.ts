@@ -58,11 +58,11 @@ export const deleteColumnTC = (id: string, boardId: string) => async (dispatch: 
     await columnsAPI.deleteColumn(id);
     dispatch(getColumnsTC(boardId))
 };
-//
-// export const updateBoardTC = (id: string, title: string) => async (dispatch: Dispatch<any>) => {
-//     await boardsAPI.updateBoard(id, title);
-//     dispatch(getBoardsTC())
-// };
+
+export const updateColumnTC = (id: string, title: string, boardId: string) => async (dispatch: Dispatch<any>) => {
+    await columnsAPI.updateColumn(id, title);
+    dispatch(getColumnsTC(boardId))
+};
 
 
 type ActionsType = SetColumnsActionType | SetColumnTitleActionType

@@ -6,9 +6,10 @@ import {
     ColumnType,
     deleteColumnTC,
     getColumnsTC,
-    setColumnTitleAC
+    setColumnTitleAC, updateColumnTC
 } from "../../../redux/reducers/column-reducer";
 import {RootStateType} from "../../../redux/store";
+import {EditableSpan} from "../../../components/EditableSpan";
 
 export const Board = () => {
 
@@ -38,8 +39,15 @@ export const Board = () => {
                     dispatch(deleteColumnTC(column._id, boardId))
                 }
 
+                const changeColumnTitle = (title: string) => {
+                    dispatch(updateColumnTC(column._id, title, boardId))
+                }
+
                 return (
-                    <div className={'column'}>{column.title}
+                    <div className={'columns'}>
+                        <div className={'column'}>
+                            <EditableSpan title={column.title} onChange={changeColumnTitle}/>
+                        </div>
                         <button onClick={removeColumn}>X</button>
                     </div>
                 )
