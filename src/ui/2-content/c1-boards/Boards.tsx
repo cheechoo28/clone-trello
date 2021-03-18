@@ -1,8 +1,9 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../redux/store";
 import {addBoardTC, BoardType, getBoardsTC, setBoardTitlesAC} from "../../../redux/reducers/boards-reducer";
-import {Board} from "./1b-board/Board";
+import {BoardItem} from "./b1-boardItem/BoardItem";
+import {NavLink} from "react-router-dom";
 
 export const Boards = () => {
 
@@ -28,7 +29,7 @@ export const Boards = () => {
             {
                 boards.map(board => {
                     return (
-                        board._id && <Board id={board._id} title={board.title}/>
+                        board._id && <NavLink to={`/board/${board._id}`}><BoardItem id={board._id} title={board.title}/></NavLink>
                     )
                 })
             }
