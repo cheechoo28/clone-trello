@@ -11,5 +11,8 @@ export const boardsAPI = {
   },
   deleteBoard(id: string) {
     return instance.delete(`boards/${id}`);
-  }
+  },
+  updateBoard(id: string, title: string) {
+    return instance.put(`boards/${id}`, {title});
+  },
 };
