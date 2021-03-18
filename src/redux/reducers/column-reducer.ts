@@ -53,11 +53,11 @@ export const addColumnTC = (title: string, boardId: string) => async (dispatch: 
     await columnsAPI.addColumn(title, boardId);
     dispatch(getColumnsTC(boardId))
 };
-//
-// export const deleteBoardTC = (id: string) => async (dispatch: Dispatch<any>) => {
-//     await boardsAPI.deleteBoard(id);
-//     dispatch(getBoardsTC())
-// };
+
+export const deleteColumnTC = (id: string, boardId: string) => async (dispatch: Dispatch<any>) => {
+    await columnsAPI.deleteColumn(id);
+    dispatch(getColumnsTC(boardId))
+};
 //
 // export const updateBoardTC = (id: string, title: string) => async (dispatch: Dispatch<any>) => {
 //     await boardsAPI.updateBoard(id, title);

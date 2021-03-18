@@ -1,7 +1,13 @@
 import React, {ChangeEvent, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {addColumnTC, ColumnType, getColumnsTC, setColumnTitleAC} from "../../../redux/reducers/column-reducer";
+import {
+    addColumnTC,
+    ColumnType,
+    deleteColumnTC,
+    getColumnsTC,
+    setColumnTitleAC
+} from "../../../redux/reducers/column-reducer";
 import {RootStateType} from "../../../redux/store";
 
 export const Board = () => {
@@ -28,8 +34,14 @@ export const Board = () => {
     return (
         <div className={'columns'}>
             {columns.map(column => {
+                const removeColumn = () => {
+                    dispatch(deleteColumnTC(column._id, boardId))
+                }
+
                 return (
-                    <div className={'column'}>{column.title}</div>
+                    <div className={'column'}>{column.title}
+                        <button onClick={removeColumn}>X</button>
+                    </div>
                 )
             })}
             <input value={title} onChange={changeColumnTitle}/>

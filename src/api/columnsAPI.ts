@@ -7,9 +7,9 @@ export const columnsAPI = {
   addColumn(title: string, boardId: string) {
     return instance.post(`/column?board_id=${boardId}`, {title});
   },
-  // deleteBoard(id: string) {
-  //   return instance.delete(`boards/${id}`);
-  // },
+  deleteColumn(id: string) {
+    return instance.delete(`column/${id}`);
+  },
   // updateBoard(id: string, title: string) {
   //   return instance.put(`boards/${id}`, {title});
   // },
