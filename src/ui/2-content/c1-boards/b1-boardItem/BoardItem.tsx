@@ -1,13 +1,13 @@
+import React from "react";
 import {useDispatch} from "react-redux";
 import {deleteBoardTC, updateBoardTC} from "../../../../redux/reducers/boards-reducer";
-import React from "react";
 import {EditableSpan} from "../../../../components/EditableSpan";
 
 type BoardPropsType = {
     id: string
     title: string
 }
-export const Board = (props: BoardPropsType) => {
+export const BoardItem = (props: BoardPropsType) => {
 
     const dispatch = useDispatch()
 
