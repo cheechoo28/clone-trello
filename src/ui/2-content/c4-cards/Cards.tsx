@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../redux/store";
-import {addCardTC, CardsType, getCardsTC} from "../../../redux/reducers/cards-reducer";
+import {addCardTC, CardsType, deleteCardTC, getCardsTC} from "../../../redux/reducers/cards-reducer";
 import React, {ChangeEvent, useEffect, useState} from "react";
 
 
@@ -36,9 +36,17 @@ export const Cards = (props: CardsPropsType) => {
             setShowInput(false)
         }
 
+        const deleteCard = (cardId: string) => {
+            dispatch(deleteCardTC(cardId, props.id))
+        }
+
         return (
             <div className={'cards'}>
-                {cardsForColumn && cardsForColumn.map((card) => <div key={card._id} className={'card'}>{card.title}</div>)}
+                {cardsForColumn && cardsForColumn.map((card) =>
+                    <div key={card._id} className={'card'}>{card.title}
+                        <button onClick={() => deleteCard(card._id)}>X</button>
+                    </div>
+                )}
                 <button onClick={onClickShowInput}>add card</button>
                 {showInput && <div>
                     <input value={cardTitle} onChange={changeCardTitle}/>

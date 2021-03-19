@@ -7,9 +7,9 @@ export const cardsAPI = {
   addCard(title: string, columnId: string) {
     return instance.post(`/cards?column_id=${columnId}`, {title});
   },
-  // deleteColumn(id: string) {
-  //   return instance.delete(`column/${id}`);
-  // },
+  deleteColumn(id: string) {
+    return instance.delete(`cards/${id}`);
+  },
   // updateColumn(id: string, title: string) {
   //   return instance.put(`column/${id}`, {title});
   // },
