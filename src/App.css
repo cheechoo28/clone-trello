@@ -31,10 +31,31 @@
 
 .columns {
     display: flex;
+    padding-top: 10px;
 }
 
 .column {
     width: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin-left: 20px;
+}
+
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.card {
+    width: 90%;
+    height: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }

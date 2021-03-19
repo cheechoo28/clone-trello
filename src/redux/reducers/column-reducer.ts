@@ -16,7 +16,7 @@ type InitialStateType = {
 
 const initialState = {
     columns: [],
-    title: ''
+    title: '',
 }
 
 export const columnReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
@@ -39,9 +39,9 @@ export const columnReducer = (state: InitialStateType = initialState, action: Ac
 
 }
 
-
 export const setColumnsAC = (columns: Array<ColumnType>) => ({type: "SET-COLUMNS", columns} as const)
 export const setColumnTitleAC = (title: string) => ({type: "SET-COLUMN-TITLE", title} as const)
+
 
 
 export const getColumnsTC = (boardId: string) => async (dispatch: Dispatch) => {
@@ -69,3 +69,4 @@ type ActionsType = SetColumnsActionType | SetColumnTitleActionType
 
 type SetColumnsActionType = ReturnType<typeof setColumnsAC>
 type SetColumnTitleActionType = ReturnType<typeof setColumnTitleAC>
+
