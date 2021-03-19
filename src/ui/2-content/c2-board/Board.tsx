@@ -6,10 +6,11 @@ import {
     ColumnType,
     deleteColumnTC,
     getColumnsTC,
-    setColumnTitleAC, updateColumnTC
+    setColumnTitleAC,
+    updateColumnTC
 } from "../../../redux/reducers/column-reducer";
 import {RootStateType} from "../../../redux/store";
-import {EditableSpan} from "../../../components/EditableSpan";
+import {Column} from "../c3-columns/Column";
 
 export const Board = () => {
 
@@ -34,7 +35,7 @@ export const Board = () => {
 
     return (
         <div className={'columns'}>
-            {columns.map(column => {
+            {columns && columns.map(column => {
                 const removeColumn = () => {
                     dispatch(deleteColumnTC(column._id, boardId))
                 }
@@ -44,12 +45,7 @@ export const Board = () => {
                 }
 
                 return (
-                    <div className={'columns'}>
-                        <div className={'column'}>
-                            <EditableSpan title={column.title} onChange={changeColumnTitle}/>
-                        </div>
-                        <button onClick={removeColumn}>X</button>
-                    </div>
+                    <Column key={column._id} title={column.title} columnId={column._id} removeColumn={removeColumn} changeColumnTitle={changeColumnTitle}/>
                 )
             })}
             <input value={title} onChange={changeColumnTitle}/>
@@ -57,4 +53,8 @@ export const Board = () => {
         </div>
     );
 };
+
+
+
+
 

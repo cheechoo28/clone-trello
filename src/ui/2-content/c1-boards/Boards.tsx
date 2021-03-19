@@ -29,7 +29,7 @@ export const Boards = () => {
             {
                 boards.map(board => {
                     return (
-                        board._id && <NavLink to={`/board/${board._id}`}><BoardItem id={board._id} title={board.title}/></NavLink>
+                        board._id && <NavLink to={`/board/${board._id}`}><BoardItem key={board._id} id={board._id} title={board.title}/></NavLink>
                     )
                 })
             }
