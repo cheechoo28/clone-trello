@@ -3,12 +3,14 @@ import thunkMiddleWare from "redux-thunk";
 import {boardsReducer} from "./reducers/boards-reducer";
 import {columnReducer} from "./reducers/column-reducer";
 import {cardsReducer} from "./reducers/cards-reducer";
+import {authReducer} from "./reducers/auth-reducer";
 
 
 const reducers = combineReducers({
    boards: boardsReducer,
    columns: columnReducer,
-   cards: cardsReducer
+   cards: cardsReducer,
+   auth: authReducer
 });
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleWare));
