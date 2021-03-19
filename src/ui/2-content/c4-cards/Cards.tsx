@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../redux/store";
-import {addCardTC, CardsType, deleteCardTC, getCardsTC} from "../../../redux/reducers/cards-reducer";
+import {addCardTC, CardsType, deleteCardTC, getCardsTC, updateCardTC} from "../../../redux/reducers/cards-reducer";
 import React, {ChangeEvent, useEffect, useState} from "react";
+import {EditableSpan} from "../../../components/EditableSpan";
 
 
 type CardsPropsType = {
@@ -42,10 +43,19 @@ export const Cards = (props: CardsPropsType) => {
 
         return (
             <div className={'cards'}>
-                {cardsForColumn && cardsForColumn.map((card) =>
-                    <div key={card._id} className={'card'}>{card.title}
-                        <button onClick={() => deleteCard(card._id)}>X</button>
-                    </div>
+                {cardsForColumn && cardsForColumn.map((card) => {
+
+                        const changeCardTitle = (title: string) => {
+                            dispatch(updateCardTC(card._id, title, props.id))
+                        }
+                        return (
+                            <div className={'card'}>
+                                <EditableSpan title={card.title} onChange={changeCardTitle}/>
+                                <button onClick={() => deleteCard(card._id)}>X</button>
+                            </div>
+
+                        )
+                    }
                 )}
                 <button onClick={onClickShowInput}>add card</button>
                 {showInput && <div>

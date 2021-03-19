@@ -51,12 +51,11 @@ export const deleteCardTC = (id: string, columnId: string) => async (dispatch: D
     await cardsAPI.deleteColumn(id);
     dispatch(getCardsTC(columnId))
 };
-//
-// export const updateColumnTC = (id: string, title: string, boardId: string) => async (dispatch: Dispatch<any>) => {
-//     await columnsAPI.updateColumn(id, title);
-//     dispatch(getColumnsTC(boardId))
-// };
 
+export const updateCardTC = (id: string, title: string, columnId: string) => async (dispatch: Dispatch<any>) => {
+    await cardsAPI.updateCard(id, title);
+    dispatch(getCardsTC(columnId))
+};
 
 type ActionsType = SetCardsActionType
 

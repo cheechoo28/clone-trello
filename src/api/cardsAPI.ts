@@ -10,7 +10,7 @@ export const cardsAPI = {
   deleteColumn(id: string) {
     return instance.delete(`cards/${id}`);
   },
-  // updateColumn(id: string, title: string) {
-  //   return instance.put(`column/${id}`, {title});
-  // },
+  updateCard(id: string, title: string) {
+    return instance.put(`cards/${id}`, {title});
+  },
 };
