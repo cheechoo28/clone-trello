@@ -1,42 +1,44 @@
-import React, {ChangeEvent, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../redux/store";
-import {addBoardTC, BoardType, getBoardsTC, setBoardTitlesAC} from "../../../redux/reducers/boards-reducer";
+import {addBoardTC, BoardsType, getBoardsTC} from "../../../redux/reducers/boards-reducer";
 import {BoardItem} from "./b1-boardItem/BoardItem";
 import {NavLink} from "react-router-dom";
+import {AddItemForm} from "../../../components/AddItemForm";
 
-export const Boards = () => {
+type BoardPropsType = {
+    teamId: string
+}
 
-    const boards = useSelector<RootStateType, Array<BoardType>>(state => state.boards.boards)
-    const title = useSelector<RootStateType, string>(state => state.boards.title)
+export const Boards = (props: BoardPropsType) => {
+
+    const boards = useSelector<RootStateType, BoardsType>(state => state.boards)
     const dispatch = useDispatch()
 
+
     useEffect(() => {
-        dispatch(getBoardsTC())
+        dispatch(getBoardsTC(props.teamId))
     }, [dispatch])
 
-    const addBoard = () => {
-        dispatch(addBoardTC({title, author_id: '1'}))
-        dispatch(setBoardTitlesAC(''))
+    const addBoard = (title: string) => {
+        dispatch(addBoardTC({title, team_id: props.teamId}, props.teamId))
     }
 
-    const onChangeBoardTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setBoardTitlesAC(e.currentTarget.value))
-    }
+    const boardsForTeam = boards[props.teamId]
 
     return (
         <div className={'container'}>
             {
-                boards.map(board => {
+                boardsForTeam && boardsForTeam.map(board => {
                     return (
-                        board._id && <NavLink to={`/board/${board._id}`}><BoardItem key={board._id} id={board._id} title={board.title}/></NavLink>
+                        board._id && <NavLink key={board._id} to={`/board/${board._id}`}><BoardItem id={board._id} teamId={props.teamId} title={board.title}/></NavLink>
                     )
                 })
             }
-            <input value={title} onChange={onChangeBoardTitle}/>
-            <button onClick={addBoard}>Add board</button>
+            <AddItemForm addItem={addBoard}/>
         </div>
     )
 }
+
 
 

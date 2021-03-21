@@ -1,12 +1,11 @@
 import {instance} from "./instance";
-import {BoardType} from "../redux/reducers/boards-reducer";
 
 
 export const boardsAPI = {
-  getBoards() {
-    return instance.get("/boards").then(res => res.data);
+  getBoards(teamId: string) {
+    return instance.get(`/boards?team_id=${teamId}`).then(res => res.data);
   },
-  addBoard(newBoard: BoardType) {
+  addBoard(newBoard: any) {
     return instance.post("/boards", newBoard).then(res => res.data);
   },
   deleteBoard(id: string) {

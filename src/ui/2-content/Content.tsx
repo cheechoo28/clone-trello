@@ -10,7 +10,7 @@ export const Content = () => {
     return (
         <div className={'content'}>
             <div>
-                <Route exact path='/' render={() => <Boards/>}/>
+               {/* <Route exact path='/' render={() => <Boards/>}/>*/}
                 <Route path='/board/:boardId' render={() => <Board/>}/>
                 <Route path='/register' render={() => <RegisterPage/>}/>
                 <Route path='/login' render={() => <LoginPage/>}/>

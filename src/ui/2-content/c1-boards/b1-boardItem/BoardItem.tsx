@@ -6,16 +6,17 @@ import {EditableSpan} from "../../../../components/EditableSpan";
 type BoardPropsType = {
     id: string
     title: string
+    teamId: string
 }
 export const BoardItem = (props: BoardPropsType) => {
 
     const dispatch = useDispatch()
 
     const changeBoardTitle = (title: string) => {
-        props.id && dispatch(updateBoardTC(props.id, title))
+        props.id && dispatch(updateBoardTC(props.id, title, props.teamId))
     }
     const removeBoard = (id: string) => {
-        dispatch(deleteBoardTC(id))
+        dispatch(deleteBoardTC(id, props.teamId))
     }
 
     return (

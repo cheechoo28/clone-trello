@@ -1,7 +1,7 @@
-import {Field, Form, Formik } from 'formik';
 import React from 'react';
+import {Field, Form, Formik} from 'formik';
 import {useDispatch} from "react-redux";
-import {loginTC, registerTC} from "../../../redux/reducers/auth-reducer";
+import {loginTC} from "../../../redux/reducers/auth-reducer";
 
 export const LoginPage = () => {
 
