@@ -59,17 +59,17 @@ export const addTeamTC = (dateTeam: any, userId: string) => async (dispatch: Dis
     await teamsAPI.addTeam(dateTeam);
     dispatch(getTeamsTC(userId))
 };
-//
-// export const deleteCardTC = (id: string, columnId: string) => async (dispatch: Dispatch<any>) => {
-//     await cardsAPI.deleteColumn(id);
-//     dispatch(getCardsTC(columnId))
-// };
-//
-// export const updateCardTC = (id: string, title: string, columnId: string) => async (dispatch: Dispatch<any>) => {
-//     await cardsAPI.updateCard(id, title);
-//     dispatch(getCardsTC(columnId))
-// };
-//
+
+export const deleteTeamTC = (id: string, userId: string) => async (dispatch: Dispatch<any>) => {
+    await teamsAPI.deleteTeam(id);
+    dispatch(getTeamsTC(userId))
+};
+
+export const updateTeamTC = (id: string, title: string, userId: string) => async (dispatch: Dispatch<any>) => {
+    await teamsAPI.updateTeam(id, title);
+    dispatch(getTeamsTC(userId))
+};
+
 type ActionsType = SetTeamsActionType | SetTeamNameActionType | SetTeamDescriptionActionType | SetTeamIdActionType
 
 type SetTeamsActionType = ReturnType<typeof setTeamAC>

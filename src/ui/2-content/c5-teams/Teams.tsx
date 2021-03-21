@@ -1,14 +1,15 @@
 import React, {ChangeEvent, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {
-    addTeamTC,
+    addTeamTC, deleteTeamTC,
     getTeamsTC,
     setTeamDescriptionAC,
     setTeamNameAC,
-    TeamType
+    TeamType, updateTeamTC
 } from "../../../redux/reducers/teams-reducer";
 import {RootStateType} from "../../../redux/store";
 import {Boards} from "../c1-boards/Boards";
+import {EditableSpan} from "../../../components/EditableSpan";
 
 export const Teams = () => {
 
@@ -36,20 +37,30 @@ export const Teams = () => {
         dispatch(setTeamDescriptionAC(''))
     }
 
+    const removeTeam = (teamId: string) => {
+        dispatch(deleteTeamTC(teamId, '6050c4b0665e18194c7709b1'))
+    }
+
     return (
         <div>
+            Name: <input value={name} onChange={changeTeamName}/>
+            Description: <input value={description} onChange={changeTeamDescription}/>
+            <button onClick={addTeam}>creat team</button>
             {teams.map(team => {
+
+                const changeTeamName = (title: string) => {
+                    dispatch(updateTeamTC(team._id, title, '6050c4b0665e18194c7709b1'))
+                }
+
                 return (
                     <div key={team._id}>
-                        <div>{team.name}</div>
+                        <EditableSpan title={team.name} onChange={changeTeamName}/><button onClick={() => removeTeam(team._id)}>X</button>
                         <Boards teamId={team._id}/>
                     </div>
                     )
             })}
             <div>
-                Name: <input value={name} onChange={changeTeamName}/>
-                Description: <input value={description} onChange={changeTeamDescription}/>
-                <button onClick={addTeam}>creat team</button>
+
             </div>
 
         </div>
