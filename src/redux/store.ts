@@ -4,13 +4,15 @@ import {boardsReducer} from "./reducers/boards-reducer";
 import {columnReducer} from "./reducers/column-reducer";
 import {cardsReducer} from "./reducers/cards-reducer";
 import {authReducer} from "./reducers/auth-reducer";
+import {teamsReducer} from "./reducers/teams-reducer";
 
 
 const reducers = combineReducers({
    boards: boardsReducer,
    columns: columnReducer,
    cards: cardsReducer,
-   auth: authReducer
+   auth: authReducer,
+   teams: teamsReducer
 });
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleWare));

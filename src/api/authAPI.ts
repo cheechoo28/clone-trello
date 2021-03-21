@@ -3,7 +3,7 @@ import {LoginDataUserType, RegisterDataUserType} from "../redux/reducers/auth-re
 
 export const authAPI = {
     authMe() {
-        return instance.get(`/auth/me`);
+        return instance.post(`/auth/me`);
     },
     register(dataUser: RegisterDataUserType) {
         return instance.post(`/auth/register`, dataUser);

@@ -49,7 +49,7 @@ export const Cards = (props: CardsPropsType) => {
                             dispatch(updateCardTC(card._id, title, props.id))
                         }
                         return (
-                            <div className={'card'}>
+                            <div key={card._id} className={'card'}>
                                 <EditableSpan title={card.title} onChange={changeCardTitle}/>
                                 <button onClick={() => deleteCard(card._id)}>X</button>
                             </div>
