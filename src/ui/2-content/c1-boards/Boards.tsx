@@ -31,7 +31,7 @@ export const Boards = (props: BoardPropsType) => {
             {
                 boardsForTeam && boardsForTeam.map(board => {
                     return (
-                        board._id && <NavLink key={board._id} to={`/board/${board._id}`}><BoardItem id={board._id} teamId={props.teamId} title={board.title}/></NavLink>
+                        board._id && <BoardItem key={board._id} id={board._id} teamId={props.teamId} title={board.title}/>
                     )
                 })
             }

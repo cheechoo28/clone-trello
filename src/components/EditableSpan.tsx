@@ -3,6 +3,7 @@ import React, {ChangeEvent, useState} from "react";
 type EditableSpanPropsType = {
     title: string
     onChange:(title: string) => void
+    isLink?: boolean
 }
 
 export const EditableSpan = (props: EditableSpanPropsType) => {

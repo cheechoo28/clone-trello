@@ -1,6 +1,5 @@
 import {boardsAPI} from "../../api/boardsAPI";
 import {Dispatch} from "redux";
-import {CardType} from "./cards-reducer";
 
 export type BoardType = {
     _id?: string
@@ -30,10 +29,8 @@ export const boardsReducer = (state: InitialStateType = initialState, action: Ac
 
 }
 
-
 export const setBoardsAC = (boards: Array<BoardType>, teamId: string) => ({type: "SET-BOARDS", boards, teamId} as const)
 export const addBoardAC = (author_id: string, title: string) => ({type: "ADD-BOARDS", author_id, title} as const)
-
 
 export const getBoardsTC = (teamId: string) => async (dispatch: Dispatch) => {
     const boards = await boardsAPI.getBoards(teamId);
